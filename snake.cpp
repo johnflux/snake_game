@@ -450,8 +450,16 @@ SnakeDirection aiGetNewSnakeDirection() {
 
 Maze maze;
 
-void draw() {
+void clear()
+{
+#if defined _WIN32
+    system("cls");
+#else
     system("clear");
+#endif
+}
+void draw() {
+    clear();
     for (int y = -1; y < ARENA_HEIGHT+1; ++y) {
         for (int x = -1; x < ARENA_WIDTH+1; ++x) {
             if (is_outside_maze(x,y))
